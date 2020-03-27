@@ -37,12 +37,12 @@
           <!-- <div style="font-size:1.3em;font-weight:300;">Math 122B</div>
           <div style="font-size:1.3em;font-weight:300;">Spring 2020</div>     -->
         </div>
-        <div class="section"><div class="title">Category of Scalar Fields and Reeb Graphs</div></div>
+        <div class="section"><div class="title">The Category of Scalar Fields</div></div>
         <div>
           Our goal in this section is to define some preliminary definitions and content. We hope to give a general overview of the cateory theoretic approach, while not getting too invovled in details that do not immediately concern the scalar fields that we are looking into. 
         </div>
         <div class="def"> 
-          A smooth, real-valued function on a manifold $\mathbb{M}$ is a <i>Morse Function</i> if it has no degenerate critical points. A critical point is said to be degenerate if the matrix of second partial derivatives (the Hessian Matrix) is singular (non-invertible). Another interpretation of this is that every critical point $b$ of our function is locally quadratic. See the Morse Theory article from Wikipedia.org for more details. 
+          A smooth, real-valued function on a manifold $\mathbb{M}$ is a <i>Morse Function</i> if it has no degenerate critical points. A critical point is said to be degenerate if the matrix of second partial derivatives (the Hessian Matrix) is singular (non-invertible). Another interpretation of this is that every critical point $b$ of our function is locally quadratic. <note>See the Morse Theory article from Wikipedia.org for more details.</note> 
         </div>
         <div class="def">
           Suppose we have a topological space $X$ equipped with a continuous map $f : X \rightarrow \mathbb{R}$. We call this a <i>scalar field</i> and denote it as $(X,f)$.
@@ -53,10 +53,10 @@
         </div>
 
         <div class="def">
-          The category of scalar fields is denoted $\mathbb{R}-\textbf{Top}$ and the morphisms between scalar fields $\varphi: (X,f) \rightarrow (Y,g)$ is a continuous map $\varphi :X \rightarrow Y$ such that the following diagram commutes:
-            <div style="display:flex;justify-content: center;">
-                <img src="./dgm_2.png" width="600">
-              </div>      
+          The category of scalar fields is denoted $\mathbb{R}-\textbf{Top}$ and a morphism between scalar fields $\varphi: (X,f) \rightarrow (Y,g)$ is a continuous map $\varphi :X \rightarrow Y$ such that the following diagram commutes:
+          <div style="display:flex;justify-content: center;">
+            <img src="./dgm_2.png" width="600">
+          </div>      
           We call this function $\varphi$ a <i>function preserving map</i>. 
         </div>
 
@@ -65,34 +65,38 @@
         </div>
       </div>
       <div class="page">
-        <div class="q">
-          <label>How do we deal two scalar fields which don't have the same range?</label>
-          <div>
-            Suppose we have two scalar fields $f$ and $g$ such that they are defined on the same domain (so their scalar functions are the only things discerning them). Now suppose that there exists no point $x \in X$ such that $g(x) = a$ but there exists some subset $U \subseteq X$ such that $f(x) = a$ for all $x\in U$. Then, the $a$-fiber of $f$ is $U$ while the $a$-fiber of $g$ is the empty set. So how does $phi$ work in this case? If there is multiple values of $\mathbb{R}$ such that this situation arises, we run into the problem of $\varphi$ mapping from $U_1$ to the empty set and $U_2$ mapping to the empty set as well, which would break commutativity because $g$ on the empty set cannot map to two different values. Note that this situation can arise even if the domains differ, of course.
-          </div>
-          <div class="sol">I believe that $\varphi$ only needs to really be function preserving on values of $a\in\mathbb{R}$ such that the $a$-fibers of both $f$ and $g$ are non-empty subsets of $X$.</div>
-        </div>
+
         <div style="margin-bottom:0px">
-          We now want to restrict our category $\mathbb{R}-\textbf{Top}$ a bit to scalar fields that are well behaved. We define this new category to be the category of <i>constructible scalar fields</i>, denoted by $\mathbb{R}-\textbf{Top}^{\textbf{C}}$. An object in this category is any scalar field that is isomorphic to another scalar field $(X,f)$ which is constructed in the following way: First, let there be a finite set $S = \{a_1,\ldots,a_n\}$ of "critical points". We use the term "critical points" here because in our example (two-manifold with a morsefunction), that is exactly what these points will be (maxima, minima, and saddles). Then:
+
+          We will now restrict this category to a subcategory of scalar fields where each of these new scalar fields are well-behaved. Let $S = \{a_1,\ldots,a_n\}$ be a finite set of real numbers, called "critical points". Then, we define a <i>critical fiber</i>, $\mathbb{V}_i$, for each $0 \leq i \leq n$ and a <i>non-critical fiber</i>, $\mathbb{E}_i$, for each $0 \leq i \leq n-1$. Each critical and non-critical fiber is defined to be a locally path-connected, compact space.
+
+        </div>
+        <div>
+          Now we define continuous attaching maps $l_i: \mathbb{E}_i \to \mathbb{V}_i$ and $r_i: \mathbb{E}_i \to \mathbb{V}_i$ for each $0 \leq i \leq n-1$. Finally, we let $X$ be the quotient space obtained by the disjoint union of $\mathbb{V}_i$ and $\mathbb{E}_i \times [a_i,a_i+1]$ by making the identifiactions $(l_i(x),a_i) \sim (x,a_i)$ and $(r_i(x),a_{i+1}) \sim (x,a_i+1)$ for all $i$ and for all $x \in \mathbb{E}_i$.
+        </div>
+        <div>
+          The intuition here is that the each non-critical fiber has a way of mapping to the critical fibers on either side in a continuous way. Now that we have a topological space $X$, we define the function $f$ as being a projection onto the second coordinate, making the pair $(X,f)$ a scalar field.
+        </div>
+        <div>Any scalar field that is isomorphic to scalar field constructed in this way is called a <i>constructible scalar field</i>. The category of constructible scalar fields, denoted as $\mathbb{R}-\textbf{Top}^{\textbf{C}}$, is a subcategory of $\mathbb{R}-\textbf{Top}$, implying that morphisms in $\mathbb{R}-\textbf{Top}^{\textbf{C}}$ are the same as morphisms in $\mathbb{R}-\textbf{Top}$</div>
+          <!-- Our definition of the category of scalar fields does not have much restriction on the types of scalar fields that we can deal with. For example there is so far no gaurantee that there restrict us to only well-behaved scalar fields which is desired. We can define a subcategory of $\mathbb{R}-\textbf{Top}$ called <i>constructible scalar fields</i>, denoted by $\mathbb{R}-\textbf{Top}^{\textbf{C}}$, which will only consist of  An object in this category is any scalar field that is isomorphic to another scalar field $(X,f)$ which is constructed in the following way: First, let there be a finite set $S = \{a_1,\ldots,a_n\}$ of "critical points". We use the term "critical points" here because in our example (two-manifold with a morsefunction), that is exactly what these points will be (maxima, minima, and saddles). Then:
           <ul>
             <li>For $0\leq i \leq n$ we have a locally path-connected compact space $\mathbb{V}_i$ (critical fiber)</li>
             <li>For $0\leq i \leq n-1$ we have a locally path-connected compact space $\mathbb{E}_i$ (non-critical fiber)</li>
             <li>For $0\leq i \leq n-1$ we have continuous maps $\mathbb{l}_i : \mathbb{E}_i \rightarrow \mathbb{V}_i$ and $\mathbb{r}_i : \mathbb{E}_i \rightarrow \mathbb{V}_{i+1}$ (attaching maps)</li>
           </ul>
-          Now we let $X$ be the quotient space obtained by the disjoint union of spaces $\mathbb{V}_i \times \{a_i\}$ and $\mathbb{E_i} \times [a_i,a_{i+1}]$ by making the identifiactions $(\mathbb{l}_i(x),a_i) \sim (x,a_i)$ and $(\mathbb{r}_i(x),a_{i+1}) \sim (x,a_{i+1})$ for all $i$ and for all $x \in \mathbb{E}_i$. 
-        </div>
+          Now we let $X$ be the quotient space obtained by the disjoint union of spaces $\mathbb{V}_i \times \{a_i\}$ and $\mathbb{E_i} \times [a_i,a_{i+1}]$ by making the identifiactions $(\mathbb{l}_i(x),a_i) \sim (x,a_i)$ and $(\mathbb{r}_i(x),a_{i+1}) \sim (x,a_{i+1})$ for all $i$ and for all $x \in \mathbb{E}_i$.  -->
         <div>
           Let's consider the example where our topological space is a 2-manifold $\mathbb{M}$ that is compact and differentiable at every point, and that the function $f$ is a morse function. We can think of this as being a hilly landscape, where the manifold is the base and the height of the peaks tell us what $f$ does to each point of the manifold. Furthemore, suppose there are no critical points that are shared. On the intervals between critical points, we select a single $a$-fiber, $a \in (a_i,a_{i+1})$ for every $0 \leq i \leq n-1$ and call it $\mathbb{E}_i$, the non-critical fiber of $i$. Now, for every critical point $a_i$ we look at the critical $a_i$-fibers and label them as $\mathbb{V}_i$. Critical points in this case are exactly minima, maxima, and saddles. Since $f$ is a morse function, we don't have any monkey saddles or higher order critical points. <note>just double check this</note>. Now, we should be able to construct a new scalar field from these fibers by elongating the non-critical fibers across the interval $[a_i,a_{i+1}]$ and then assigning the attaching maps above. What we are essentially achieving are homotopy equivalences between the non-critical fibers $\mathbb{E}_i$ and $f^{-1}(a_i,a_i+1)$. <note>Go into more detail about why this creates a homotopy equivalence</note>
         </div>
       </div>
-      <div class="page">
+      <!-- <div class="page">
         <div class="def">
           A constructible scalar field such that each of the spaces $\mathbb{V}_i$ and $\mathbb{E}_i$ are all 0-dimensional is called a <i>Reeb Graph</i> and is an object of the category $\textbf{Reeb}$. We can think of these spaces $\mathbb{V}_i$ and $\mathbb{E}_i$ as vertices and edges, respectively. <note>Go into detail about morphisms</note>
         </div>
         <div>
           <note>You can probably go more in depth about notation.</note> Given a constructible scalar field, we can construct the corresponding Reeb Graph by assigning $V_i = \pi_0(\mathbb{V}_i)$ to be the vertices of the Reeb graph and $E_i = \pi_0(\mathbb{E}_i)$ to be the edges, where $\pi_0$ maps a topological space to its set of path-connected components.
         </div>
-      </div>
+      </div> -->
       <div class="page">
         <div class="section"><div class="title">The Category of Reeb Graphs and The Reeb Functor</div></div>
         <div>
@@ -101,9 +105,33 @@
         <div>
           Given a scalar field $(X,f)$, we can construct its Reeb graph as follows: We first define an equivalence relation between points $x,y \in X$ by stating that $x\sim y$ if $f(x) = f(y)$ (same "height" in our scenario) and only if $x,y$ are in the same path-connected component (accessible from one another without traversing water in our scenario). Then we can define the quotient space $X_f := X/\sim_f$ using this equivalence relation. We then define a new function $\tilde{f}$ as satisfying $\tilde{f}\circ \rho = f$, where $\rho$ is the quotient map $\rho : X \to X_f$. The pair $(X_f, \tilde{f})$ is the <b>Reeb Graph</b>  of the scalar field $(X,f)$.
         </div>
-        <div>We can construct a new category called $\textbf{Reeb}$ which is the category of Reeb graphs. If we separate the notion that a Reeb graph is constructed from a scalar field, we can still provide a rigorous definition for what an object in $\textbf{Reeb}$ are. Formally, we define the category $\textbf{Reeb}$ to be subcategory of $\mathbb{R}-\textbf{Top}^{\textbf{C}}$ such that all critical and non-critical fibers are 0-dimensional. <note>There is a ton of stuff you already wrote about this that you can grab from above</note> Because this is a subcategory, morphisms in $\textbf{Reeb}$ are the same as morphisms in $\mathbb{R}-\textbf{Top}^{\textbf{C}}$, which are continuous, function-preserving maps. We want to show that given $(X,f)$ is an object in $\mathbb{R}-\textbf{Top}^{\textbf{C}}$ that its Reeb graph $(X_f,\tilde{f})$ is an object in $\textbf{Reeb}$. The 0-dimensional fiber must be true because we know that an $a$-fiber in $(X,f)$ is a locally path-connected, compact space. So, the corresponding $a$-fiber in $(X_f,\tilde{f})$ is the contraction of each of the path-connected pieces to single point, meaning they are 0-dimensional (and they will still be locally path-connected and compact). Now we need to show that $\tilde{f}$ is a function preserving and a continuous map.</div>
+        <div>We can construct a new category called $\textbf{Reeb}$ which is the category of Reeb graphs. If we separate the notion that a Reeb graph is constructed from a scalar field, we can still provide a rigorous definition for what an object in $\textbf{Reeb}$ is. Formally, we define the category $\textbf{Reeb}$ to be the subcategory of $\mathbb{R}-\textbf{Top}^{\textbf{C}}$ such that all critical and non-critical fibers are 0-dimensional. <note>There is a ton of stuff you already wrote about this that you can grab from above</note> Because this is a subcategory, morphisms in $\textbf{Reeb}$ are the same as morphisms in $\mathbb{R}-\textbf{Top}^{\textbf{C}}$, which are continuous, function-preserving maps. We want to show that given $(X,f)$ is an object in $\mathbb{R}-\textbf{Top}^{\textbf{C}}$ that its Reeb graph $(X_f,\tilde{f})$ is an object in $\textbf{Reeb}$. The 0-dimensional fiber must be true because we know that an $a$-fiber in $(X,f)$ is a locally path-connected, compact space. So, the corresponding $a$-fiber in $(X_f,\tilde{f})$ is the contraction of each of the path-connected pieces to single point, meaning they are 0-dimensional (and they will still be locally path-connected and compact). Now we need to show that $\tilde{f}$ is a function preserving and a continuous map.</div>
         <div>
-          <b>Munkres Theorem 22.2</b> Suppose p is a quotient map $\rho : X \to Y$. Now suppose 
+          <b>Munkres Theorem 22.2</b> Suppose $\rho$ is a quotient map $\rho : X \to Y$. Now suppose there exists another topological space $Z$ and a map $f: Y \to Z$ such that $f$ is constant on all subsets $\rho^{-1}(\{y\})$ for all $y \in Y$. Then there exists a function $f$ such taht $g \circ \rho = f$ and $g$ in continuous if and only if $f$ is continuous.
+        </div>
+        <div>
+          <i>proof:</i> We only need the backwards direction for this work. That is, we need to show that the function $f$ exists and that if $g$ is continuous, $f$ is continuous. Assume that $g$ is constant on point pre-images $\rho^{-1}(\{y\})$ and that $g$ is continuous. Then we know that $f(\rho^{-1}(\{y\}))$ is a single point in $Z$. Denote this point as $f(y)$. Then we have a map $g:X\to Z$ such that for all $x in X$, $(g \circ \rho)(x) = f(x)$. Now, let $V$ be and open set in $Z$. Then $f^{-1}(V)$ is open and $f^{-1}(V) = \rho(g^{-1}(V))$. Since $\rho$ is a quotient map (which means it must be continuous), $\rho^{-1}(U)$ is open when $U$ is open. Thus, $g^{-1}(V)$ must be open which implies that $g$ is continuous.
+        </div>
+        <div>
+          In our scenario, the quotient map is $\rho : X \to X_f$ and our continuous function is $f: X \to \mathbb{R}$. Since $f$ is constant on point pre-images of $X_f$ (by definition of the quotient space $X_f$), there exists a continuous function $g = \tilde{f}$ such that $\tilde{f} \circ \rho = f$. Thus, $\tilde{f}$ is a function-preserving, continous map which shows that $(X_f,\tilde{f})$ is in fact an object in the category $\textbf{Reeb}$.
+        </div>
+      </div>
+      <div class="page">
+        <div>
+          This can be displayed using the commutative diagram below:
+          <div style="display:flex;justify-content: center;">
+            <img src="./dgm_3.png" width="600">
+          </div>      
+        </div>
+        <div>
+          We are now ready to define the Reeb Functor $\mathcal{R}: \mathbb{R}-\textbf{Top}^{\textbf{C}} \to \textbf{Reeb}$. Recall that a functor $F:\textbf{C} \to \textbf{D}$ is defined as a mapping between categories such that for each obect $A \in \textbf{C}$ there exists an object $F(A)$ and for each morphism $\alpha$ in $\textbf{C}$, there exists a morphism $F[\alpha]$. Furthermore, a functor must respect the identity element and composition. That is, $F[\alpha \circ \beta] = F[\alpha] \circ F[\beta]$ and $F[\text{id}_A] = \text{id}_{F(A)}$.
+        </div>
+        <div>
+          We start by defining $\mathcal{R}(X,f) = (X_f,\tilde{f})$. Then, we need to define a formula for how this functor maps a morphism in $\mathbb{R} - \textbf{Top}^{\textbf{C}}$ to a morphism in $\bar{\alpha}$ in $\textbf{Reeb}$. Let $\alpha: (X,f) \to (Y,g)$ be a morphism in $\mathbb{R} - \textbf{Top}^{\textbf{C}}$ and let $\rho_g : (Y,g) \to (Y_g,\tilde{g})$ and $\rho_f : (X,f) \to (X_f,\tilde{f})$ be quotient maps as defined above. Since $\alpha$ preserves level sets  and is continuous (by definition of a morphism in this category), we know that the composition $\rho_g \circ \alpha$ is constant on $\rho_f({z})$ for all $z \in (X_f,\tilde{f})$ . To see this, suppose $x,y$ are in $\rho_f^{-1}({z})$ for some $z \in (X_f,\tilde{f})$. This implies that $x,y$ are in the same $a$-fiber of $X$ and they lie on the same path-connected component. Then, $\alpha(x)$ and $\alpha(y)$ are in the same $a$-fiber of $Y$ and also lie on the same path-connected component because continuous functions carry path-connected sets to path-connected sets. Then $\rho_g(\alpha(x)) = \rho_g(\alpha(y))$ which implies that this composite map is constant over elements of $\rho_f^{-1}({z})$. By Munkres Theorem 22.2, there exists a map $\bar{\alpha}$ such that the following diagram commutes: 
+          <div style="display:flex;justify-content: center;">
+            <img src="./dgm_4.png" width="600">
+          </div>
+          We define $\mathcal{R}[\alpha] = \bar{\alpha}$. Now what is left to show is that this respects the identity morphism and composition. <note>Might or might not have to go into detail here</note>
         </div>
       </div>
       <div class="page">
@@ -138,6 +166,15 @@
       </div>
     </div>
     <div class="page">
+      <div class="q">
+        <label>How do we deal two scalar fields which don't have the same range?</label>
+        <div>
+          Suppose we have two scalar fields $f$ and $g$ such that they are defined on the same domain (so their scalar functions are the only things discerning them). Now suppose that there exists no point $x \in X$ such that $g(x) = a$ but there exists some subset $U \subseteq X$ such that $f(x) = a$ for all $x\in U$. Then, the $a$-fiber of $f$ is $U$ while the $a$-fiber of $g$ is the empty set. So how does $phi$ work in this case? If there is multiple values of $\mathbb{R}$ such that this situation arises, we run into the problem of $\varphi$ mapping from $U_1$ to the empty set and $U_2$ mapping to the empty set as well, which would break commutativity because $g$ on the empty set cannot map to two differennnt values. Note that this situation can arise even if the domains differ, of course.
+        </div>
+        <div class="sol">I believe that $\varphi$ only needs to really be function preserving on values of $a\in\mathbb{R}$ such that the $a$-fibers of both $f$ and $g$ are non-empty subsets of $X$.</div>
+      </div>
+    </div>
+    <div class="page">
       <div class="section"><div class="title">Presentation Outline</div>
       <ol>
         <li>Problem</li>
@@ -148,7 +185,7 @@
         </ol>
         <li>Background</li>
         <ol>
-          <li>Reeb Graphs, Contour Trees</li>
+          <li>Reeb Graphs, Contour Trees</li>1
           <li>Distances on Topological Structures (BottleNeck Distance, Functional Distortion Distance)</li>
         </ol>
         <li>Interleaving Distance</li>
@@ -191,3 +228,4 @@
           We can have "tangent cylinders" in this case. The non-critical fibers are simply homotopic to figure eights. At the critical fibers on either side, there <i>must</i> be a figure-eight shape (or more tangent circles) so that we don't have to split up the figure-eight. This is to be expected though, because the critical fibers are points where things join or separate.
         </div>
       </div> -->
+      
