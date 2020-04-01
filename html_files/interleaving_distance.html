@@ -41,16 +41,16 @@
         <div>
           Our goal in this section is to define some preliminary definitions and content. We hope to give a general overview of the cateory theoretic approach, while not getting too invovled in details that do not immediately concern the scalar fields that we are looking into. 
         </div>
-        <div class="def"> 
+        <!-- <div class="def"> 
           A smooth, real-valued function on a manifold $\mathbb{M}$ is a <i>Morse Function</i> if it has no degenerate critical points. A critical point is said to be degenerate if the matrix of second partial derivatives (the Hessian Matrix) is singular (non-invertible). Another interpretation of this is that every critical point $b$ of our function is locally quadratic. <note>See the Morse Theory article from Wikipedia.org for more details.</note> 
-        </div>
+        </div> -->
         <div class="def">
           Suppose we have a topological space $X$ equipped with a continuous map $f : X \rightarrow \mathbb{R}$. We call this a <i>scalar field</i> and denote it as $(X,f)$.
         </div>
 
-        <div>
+        <!-- <div>
           In our work, we often use the example of a compact, differentiable, 2-manifold as our topological space and our function $f$ is a morse function. This case creates a specific scalar field which is easier to work with than just general scalar fields
-        </div>
+        </div> -->
 
         <div class="def">
           The category of scalar fields is denoted $\mathbb{R}-\textbf{Top}$ and a morphism between scalar fields $\varphi: (X,f) \rightarrow (Y,g)$ is a continuous map $\varphi :X \rightarrow Y$ such that the following diagram commutes:
@@ -164,6 +164,26 @@
         </div>  
         <div>If we go back to our canonical example, we have a Reeb Graph constructed from our scalar field. At every interval of the real line, we have some pull back on the actual topological space. For two different scalar fields that we are comparing, $f,g$, we are always looking within the same "window". What we seek to find is the value of $\epsilon$ such that mapping from any pullback of $f$ to the pullback of a "thickened" $g$.  </div>
       </div>
+    </div>
+    <div class="page">
+      <div class="section"><div class="title">Computational Methods</div>
+      <div>
+        To be able to compute any of these structures, we first need to introduce some preliminary defitinitions for the spaces that we compute on.
+      </div>
+      <div class="def">
+        A <i>$n$-simplex</i> is the convex hull of $n+1$ geometrically independent (affinely independent) points embedded in $\mathbb{R}^n$.
+      </div>
+      <div class="def">
+        A <i>finite simplicial complex</i> $\mathcal{K}$ in $\mathbb{R}^N$ is a finite collection of simplices such that every face of a simplex $\sigma$ is also in $\mathcal{K}$ and the intersection of two simplices in $\mathcal{K}$ is a face of both of them (or neither of them). We will only refer to finite simplicial complexes in this work (as opposed to infinite simplicial complexes) so we will drop the term "finite" from now on.
+      </div>
+      <div class="def">
+        The underlying space $|\mathcal{K}|$ of a simplicial complex $\mathcal{K}$ is the union all simplices in $\mathcal{K}$ as a space embedded in $\mathbb{R}^N$. This definition drives at the difference between the combinatorial nature of a simplicial complex $\mathcal{K}$ (sometimes called an <i>abstract simplicial complex</i>) in comparison with the actual points it contains when realized in $\mathbb{R}^N$. Thankfully, we can store just the abstract simplicial complex in memory and pull the underlying space from it as we wish.
+      </div>
+      <div class="def">Suppose we have a topological space $\mathbb{X}$. The triangulation $\mathcal{T}$ of $\mathbb{X}$ is a simpilicial complex $\mathcal{K}$ whose underlying space $|\mathcal{K}|$ is homeomorphic to $\mathbb{X}$. Note that in this construction, the underlying space $|\mathcal{K}|$ would relate to the actual physical representation of the space $\mathbb{X}$, while the simplicial complex $\mathcal{K}$ is simply the combinatorial representation of this space.</div>
+      <div>
+        The data sets that we often compute on are pulled from some manifold $\mathbb{M}$. Of course the data cannot be sampled at every point of the manifold, so we introduce the concept of a <i>piecewise-linear manifold</i> which is the triangulation of a manifold $\mathbb{M}$. Thus, a piecweise-linear manifold is a combinatorial representation of the manifold. From this, we can create a <i>piecweise-linear scalar field</i>
+      </div>
+      <div class="def">Let $\mathbb{M}$ be a compact manifold and let $f:\mathbb{M} \to \mathbb{R}$ be a continuous scalar function. Then the pair $(\mathbb{M},f)$ is an object in the category $\mathbb{R}-\textbf{Top}$ <note>hopefully constructible</note>. From this we can create a piecewise linear manifold by taking the triangulation of the manifold $\mathbb{M}$. This induces a new function $\hat{f}$ which is defined as $\hat{f}(x) = \sum^d_{i=0} \alpha_i f(\tau^i_0)$, where $\tau^i_0$ are the 0-dimensional simplices (vertices) of the simplex $\sigma$ such that $x \in \sigma$ and the coefficients $\alpha_i$ are the barycentric coordinates of $x$.</div>
     </div>
     <div class="page">
       <div class="q">
