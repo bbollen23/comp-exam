@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
+    <link rel="stylesheet" type="text/css" href="./style.css"/>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style type="text/css" media="print">
+      @page {
+          size: letter;   /* auto is the initial value */
+          margin: 0;  /* this affects the margin in the printer settings */
+      }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto|Montserrat|Open+Sans&display=swap" rel="stylesheet">
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        },
+        tex:{
+          tags: 'ams'
+        }
+      });
+    </script>
+    <script type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+  </head>
+	<body>
+		<div class="page">
+			<div class="section"><div class="title">Presentation Outline</div></div>
+			<ol>
+				<li>What is Topological Data Analysis?</li>
+				<ol>
+					<li>How has it been used historically</li>
+					<li>Introduce ideas about topological structures</li>
+					<li>TTK Demo</li>
+				</ol>
+				<li>Formal Background</li>
+				<ol>
+					<li>Reeb Graphs, Contour Trees</li>
+					<li>Distances on Topological Structures (BottleNeck Distance)</li>
+				</ol>
+				<li>Interleaving Distance</li>
+				<ol>
+					<li>Categorification of Reeb Graphs</li>
+					<li>Relation to Cosheaves</li>
+					<li>Definition of Interleaving Distance</li>
+					<li>Smoothing, and Thickening Functors</li>
+					<li>Geometric Intuation of Interleaving Distance</li>
+				</ol>
+				<li>Future Work</li>
+				<ol>
+					<li>Computational Difficulties</li>
+					<li>Pairwise Interleaving Distance: What does it tell us about the underlying scalar fields?</li>
+					<li>Difficulties in definition (pre-optimization of scalar fields to match up might be needed)</li>
+				</ol>
+			</ol>
+		</div>
+	</body>
+</html>
+
