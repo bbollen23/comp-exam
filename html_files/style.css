@@ -28,7 +28,7 @@ div.page{
 
 
 .section{
-  /* counter-reset:label; */
+  counter-reset:label;
   counter-increment:section;
   margin-bottom:15px;
 }
@@ -41,6 +41,24 @@ div.page{
 
 .section .title::before{
   content: counter(section);
+  margin-right:25px;
+}
+
+
+.sub-section{
+  counter-reset:label;
+  counter-increment:subsection;
+  margin-bottom:15px;
+}
+
+.sub-section .title{
+  font-size:1.1em;
+  font-weight:600;
+  margin-bottom:0px;
+}
+
+.sub-section .title::before{
+  content: counter(section) "." counter(subsection);
   margin-right:25px;
 }
 
@@ -57,19 +75,19 @@ div.page{
 }
 
 .def::before{
-  content: "Definition " counter(section) "."  counter(label) ":";
+  content: "Definition " counter(section) "." counter(subsection) "."  counter(label) ":";
 }
 
 .thm::before{
-  content: "Theorem " counter(section) "."  counter(label) ":";
+  content: "Theorem " counter(section) "." counter(subsection) "."  counter(label) ":";
 }
 
 .prop::before{
-  content: "Proposition " counter(section) "."  counter(label) ":";
+  content: "Proposition " counter(section) "." counter(subsection) "."  counter(label) ":";
 }
 
 .lemma::before{
-  content: "Lemma " counter(section) "."  counter(label) ":";
+  content: "Lemma " counter(section) "." counter(subsection) "."  counter(label) ":";
 }
 
 .q::before{
@@ -125,9 +143,10 @@ note{
 
 
 
-
-
-
-
-
-
+/*-------------------------------------*/
+span.func {
+  font-family: 'Baloo Paaji 2', cursive;
+  font-weight: 500;
+  font-size: 1.3em; }
+  
+/*-------------------------------------*/

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
+    <link rel="stylesheet" type="text/css" href="./style.css"/>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style type="text/css" media="print">
+      @page {
+          size: letter;   /* auto is the initial value */
+          margin: 0;  /* this affects the margin in the printer settings */
+      }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto|Montserrat|Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@500&display=swap" rel="stylesheet">
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        },
+        tex:{
+          tags: 'ams'
+        }
+      });
+    </script>
+    <script type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page">
+        <div class="header" style="margin-bottom:30px;">
+          <div style="font-size:2.0em;font-weight:500;margin-bottom:30px;">Interleaving Distance between Scalar Fields</div>
+        </div>
+      </div>
+      <div class="page">
+        \(
+          \newcommand{\afunc}[1]{\operatorname{\mathsf{#1}}}
+          \newcommand{\rtop}{\mathbb{R}\text{-}\textbf{Top}}
+          \newcommand{\rtopc}{\mathbb{R}\text{-}\textbf{Top}^{\textbf{C}}}
+          \def\bold#1{{\bf #1}}
+       \)
+        <div class="section"><div class="title">Introduction</div></div>
+        <div class="sub-section"><div class="title">What is a Scalar Field?</div></div>
+        <div>Suppose we want to measure the temperature at of the surface of the Earth over a large region. We can think of this region as simply being a two-manifold ignoring the possible changes in height as we sample and only taking into consideration the geographic coordinates. Denote this space as $\mathbb{X}$. Then we also have a function $f:\mathbb{X}\to \mathbb{R}$ mapping from this two-manifold to the real numbers by associating the coordinate pair with the temperature at this point. The pair $(\mathbb{X},f)$ is called a <i>scalar field</i>. We can often visualize well-behaved scalar fields as some sort of mountainous or hilly terrain. Just as we can use contour lines on a map to indicate regions that are the same elevation, we are sometimes interested in a subset $U \in \mathbb{X}$ such that all points in $U$ have the same function value. These are called <i>level sets</i> or <i>fibers</i> of the scalar field <note>Maybe something about our concern with the evolution of the level sets</note></div>
+        <div class="sub-section"><div class="title">Comparing Scalar Fields</div></div>
+        <div class="sub-section"><div class="title">Topological Evolution of a Scalar Field</div></div>
+        <div class="def">Let $(\mathbb{X},f)$ be a scalar field. We can define an equivalence relation on $\mathbb{X}$ by defining $x\sim y$ if $f(x) = f(y) = a$ (they belong to the same $a$-fiber) and if $x,y$ are in the same path connected component of the $a$-fiber. Then, the quotient space $\mathbb{X}_f := \mathbb{X}/\sim_f$ is called the <i>Reeb Graph</i> of the scalar field $(\mathbb{X},f)$. We equip the Reeb Graph with the function $\tilde{f}$ which is defined as $\rho \circ \tilde{f} = f$, where $\rho: \mathbb{X} \to \mathbb{X}_f$ is the quotient map. The Reeb Graph tracks the evolution of the levelset topology of the scalar field. It shows how the fibers of the scalar field split and merge. </div>
+      </div>
+      <div class="page">
+        <div class="section"><div class="title">Categorifying Reeb Graphs and Scalar Fields</div></div>
+        <div class="sub-section"><div class="title">Category Theory</div></div>
+        <div class="def">A <i>category</i> is a collection $\textbf{C}$ of <i>objects</i> with <i>morphisms</i> (also called <i>maps</i>) that map between these objects. Each morphism $\alpha$ has a source $A\in \textbf{C}$ and a target $B\in \textbf{C}$. Morphisms usually represent some sort of "structure" preserving idea, such as isomorphism when considering the category of vector spaces $\textbf{Vect}$, or homomorphisms in the category of groups $\textbf{Grp}$. Every object $A$ in a category $\textbf{C}$ has an identity morphsim $\textbf{id}_A:A \to A$.</div>
+        <div class="def">A <i>functor</i> $\afunc{F}$ is a mapping between two categories $\textbf{C}$ and $\textbf{D}$ that satisfies the following properties:
+        <ul>
+          <li>For each object $A \in \textbf{C}$, there is a corresponding object $\afunc{F}(A) \in \textbf{D}$</li>
+          <li>For each moprhism $\alpha: A \to B$ in $\textbf{C}$, there is a corresponding morphism $\afunc{F}[\alpha]:\afunc{F}(A) \to \afunc{F}(B)$ in $\textbf{D}$.</li>
+          <li>The functors respect composition: $\afunc{F}[\alpha \circ \beta] = \afunc{F}[\alpha] \circ \afunc{F}[\beta]$</li>
+          <li>The functors respect identities: $\afunc{F}[\textbf{id}_A] = \textbf{id}_{\afunc{F}[A]}$</li>
+        </ul>
+        A functor can be thought of as a way to map between categories in the same way that functions map between spaces (vector spaces, groups, etc.)
+        <div class="def">A <i>natural transformation</i> a map $\eta: \afunc{F} \Rightarrow \afunc{G}$ between two functors, $\afunc{F},\afunc{G}:\textbf{C} \to \textbf{D}$. It consists of a family of maps $\eta_A:\afunc{F}(A) \to \afunc{G}(A)$ for each object $A\in \textbf{C}$, such that for each morphism $\alpha : A \to B$ in $A$, we have $\eta_B \circ \afunc{F}[\alpha] = \afunc{G}[\alpha] \circ \eta_A$. In other words, the following diagram commutes: </div>
+        </div>
+        <div class="sub-section"><div class="title">Category of Scalar Fields</div></div>
+        <div>We can construct the <i>category of scalar fields</i> (in related work also called the category of $\mathbb{R}$-spaces) denoted as $\rtop$ by stating that each object is a scalar field $(\mathbb{X},f)$ and each morphism $\alpha: (\mathbb{X},f) \to (\mathbb{Y},g)$ is a continuous, <i>function-preserving</i> map $\alpha:\mathbb{X}\to \mathbb{Y}$ between topological spaces. A function preserving map means that $\alpha \circ g = f$. In other words, the following diagram commutes:</div>
+        <div class="def">We call the point pre-images $f^{-1}(a)$ of $\mathbb{X}$ the $a$-<i>levelset</i> or $a$-<i>fiber</i> of $\mathbb{X}$. In this way, we can say that the morphisms in the category of scalar fields preserve $a$-levelsets or $a$-fibers.</div>
+        <div>To make sure that we are dealing with well-behaved scalar fields, we will restrict this category to a subcategory. Let $S = \{a_1,\ldots,a_n\}$ be a finites set of real numbers, called "critical points". Then, we defined a <i>critical fiber</i>, \mathbb{V}_i, for each $0\leq i \leq n$ and a <i>non-critical fiber</i>, $\mathbb{E}_i$ for each $0 \leq i \leq n-1$. Each critical and non-critical fiber is defined to a be a locally path-connected, compact space.</div>
+        <div>Now we define continuous attaching maps $l_i:\mathbb{E}_i \to \mathbb{V}_i$ and $r_i:\mathbb{E}_i \to \mathbb{V}_{i-1}$ for each $0 \leq i \leq n-1$. Finally, we let $\mathbb{X}$ be the quotient space obtained by the disjoin union of $\mathbb{V}_i \times \{a_i\}$ and $\mathbb{E}_i \times [a_i,a_{i+1}]$ by making the identifications $(l_i(x),a_i) \sim (x,a_i)$ and $(r_i(x),a_{i+1}) \sim (x,a_{i+1})$ for all $i$ and all $x \in \mathbb{E}_i$. Now, define a function $f$ such that $f(x,a) = a$. We can see that the pair $(\mathbb{X},f)$ defines a scalar field since $\mathbb{X}$ is a topological space and $f$ is simply a projection onto the second factor, which is a continuous function.</div>
+
+      </div>
+      <div class="page">
+        <div>Finally, we say that any scalar field that is isomorphic to another scalar field that can be constructed in the way described above is <i>constructible</i>. The intuition here is that between the critical points, the fibers have a disconnected "cylidrical" sctructure (or just a single cylinder). Then at the critical fibers, we have places where the cylindrical structures are able to "merge" or "split". Note again that these attaching maps are always mapping <i>from</i> the non-critical fibers. So if our cylinder has cylinders that split into two cylinders, there must be a critical fiber which is a figure eight, exactly at the point where they start to split. In this way, then we can always map a single cylinder to a figure eight or two cylinders from to the figure eight. We never have to worry about actually "splitting" the figure eight into two cylinders (which is discontinuous) because are maps only go twoards the critical-fibers.</div>
+        <div>We call the this new subcategory the category of <i>constructible scalar fields</i> and denote is as $\rtopc$. As we said before, this category is a subcategory which implies that the morphisms in $\rtopc$</div>
+        <div class="sub-section"><div class="title">Category of Reeb Graphs and Reeb Functor</div></div>
+        <div>Let $(\mathbb{X},f)$ be a constructible scalar field such that each critical and non-critical fiber is 0-dimensional. So, this constructible scalar field is isomorphic to a scalar field where the critical fibers are vertices and the non-ciritcal fibers are edges. This defined an object in the category of Reeb Graphs, denoted $\textbf{Reeb}$.</div>
+        <div class="sub-section"><div class="title">Pre-Cosheafs and Cosheafs</div></div>
+      </div>
+      <div class="page">
+        <div class="section"><div class="title">Interleaving Distance</div></div>
+      </div>
+      <div class="page">
+        <div class="section"><div class="title">Computational Methods</div></div>
+      </div>
+      <div class="page">
+        <div class="section"><div class="title">Future Direction and Proposed Work</div></div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+      
