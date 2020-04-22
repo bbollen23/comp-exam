@@ -12,6 +12,8 @@
       }
 
     </style>
+    <link rel="stylesheet" type="text/css" href="http://tikzjax.com/v1/fonts.css">
+    <script src="http://tikzjax.com/v1/tikzjax.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto|Montserrat|Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@500&display=swap" rel="stylesheet">
     <script type="text/x-mathjax-config">
@@ -37,12 +39,12 @@
         </div>
       </div>
       <div class="page">
-        \(
+        $
           \newcommand{\afunc}[1]{\operatorname{\mathsf{#1}}}
           \newcommand{\rtop}{\mathbb{R}\text{-}\textbf{Top}}
           \newcommand{\rtopc}{\mathbb{R}\text{-}\textbf{Top}^{\textbf{C}}}
           \def\bold#1{{\bf #1}}
-       \)
+        $
         <div class="section"><div class="title">Introduction</div></div>
         <div class="sub-section"><div class="title">What is a Scalar Field?</div></div>
         <div>Suppose we want to measure the temperature at of the surface of the Earth over a large region. We can think of this region as simply being a two-manifold ignoring the possible changes in height as we sample and only taking into consideration the geographic coordinates. Denote this space as $\mathbb{X}$. Then we also have a function $f:\mathbb{X}\to \mathbb{R}$ mapping from this two-manifold to the real numbers by associating the coordinate pair with the temperature at this point. The pair $(\mathbb{X},f)$ is called a <i>scalar field</i>. We can often visualize well-behaved scalar fields as some sort of mountainous or hilly terrain. Just as we can use contour lines on a map to indicate regions that are the same elevation, we are sometimes interested in a subset $U \in \mathbb{X}$ such that all points in $U$ have the same function value. These are called <i>level sets</i> or <i>fibers</i> of the scalar field <note>Maybe something about our concern with the evolution of the level sets</note></div>
@@ -67,7 +69,7 @@
         <div class="sub-section"><div class="title">Category of Scalar Fields</div></div>
         <div>We can construct the <i>category of scalar fields</i> (in related work also called the category of $\mathbb{R}$-spaces) denoted as $\rtop$ by stating that each object is a scalar field $(\mathbb{X},f)$ and each morphism $\alpha: (\mathbb{X},f) \to (\mathbb{Y},g)$ is a continuous, <i>function-preserving</i> map $\alpha:\mathbb{X}\to \mathbb{Y}$ between topological spaces. A function preserving map means that $\alpha \circ g = f$. In other words, the following diagram commutes:</div>
         <div class="def">We call the point pre-images $f^{-1}(a)$ of $\mathbb{X}$ the $a$-<i>levelset</i> or $a$-<i>fiber</i> of $\mathbb{X}$. In this way, we can say that the morphisms in the category of scalar fields preserve $a$-levelsets or $a$-fibers.</div>
-        <div>To make sure that we are dealing with well-behaved scalar fields, we will restrict this category to a subcategory. Let $S = \{a_1,\ldots,a_n\}$ be a finites set of real numbers, called "critical points". Then, we defined a <i>critical fiber</i>, \mathbb{V}_i, for each $0\leq i \leq n$ and a <i>non-critical fiber</i>, $\mathbb{E}_i$ for each $0 \leq i \leq n-1$. Each critical and non-critical fiber is defined to a be a locally path-connected, compact space.</div>
+        <div>To make sure that we are dealing with well-behaved scalar fields, we will restrict this category to a subcategory. Let $S = \{a_1,\ldots,a_n\}$ be a finites set of real numbers, called "critical points". Then, we defined a <i>critical fiber</i>, $\mathbb{V}_i$, for each $0\leq i \leq n$ and a <i>non-critical fiber</i>, $\mathbb{E}_i$ for each $0 \leq i \leq n-1$. Each critical and non-critical fiber is defined to a be a locally path-connected, compact space.</div>
         <div>Now we define continuous attaching maps $l_i:\mathbb{E}_i \to \mathbb{V}_i$ and $r_i:\mathbb{E}_i \to \mathbb{V}_{i-1}$ for each $0 \leq i \leq n-1$. Finally, we let $\mathbb{X}$ be the quotient space obtained by the disjoin union of $\mathbb{V}_i \times \{a_i\}$ and $\mathbb{E}_i \times [a_i,a_{i+1}]$ by making the identifications $(l_i(x),a_i) \sim (x,a_i)$ and $(r_i(x),a_{i+1}) \sim (x,a_{i+1})$ for all $i$ and all $x \in \mathbb{E}_i$. Now, define a function $f$ such that $f(x,a) = a$. We can see that the pair $(\mathbb{X},f)$ defines a scalar field since $\mathbb{X}$ is a topological space and $f$ is simply a projection onto the second factor, which is a continuous function.</div>
 
       </div>
@@ -77,6 +79,11 @@
         <div class="sub-section"><div class="title">Category of Reeb Graphs and Reeb Functor</div></div>
         <div>Let $(\mathbb{X},f)$ be a constructible scalar field such that each critical and non-critical fiber is 0-dimensional. So, this constructible scalar field is isomorphic to a scalar field where the critical fibers are vertices and the non-ciritcal fibers are edges. This defined an object in the category of Reeb Graphs, denoted $\textbf{Reeb}$.</div>
         <div class="sub-section"><div class="title">Pre-Cosheafs and Cosheafs</div></div>
+        <script type="text/tikz">
+          \begin{tikzpicture}
+            \draw (0,0) circle (1in);
+          \end{tikzpicture}
+        </script>
       </div>
       <div class="page">
         <div class="section"><div class="title">Interleaving Distance</div></div>
