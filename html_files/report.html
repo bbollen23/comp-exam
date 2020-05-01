@@ -62,16 +62,29 @@
       </ul>
       </div>
       A functor can be thought of as a way to map between categories in the same way that functions map between spaces (vector spaces, groups, etc.)
-      <div class="def">A <i>natural transformation</i> a map $\eta: \afunc{F} \Rightarrow \afunc{G}$ between two functors, $\afunc{F},\afunc{G}:\textbf{C} \to \textbf{D}$. It consists of a family of maps $\eta_A:\afunc{F}(A) \to \afunc{G}(A)$ for each object $A\in \textbf{C}$, such that for each morphism $\alpha : A \to B$ in $A$, we have $\eta_B \circ \afunc{F}[\alpha] = \afunc{G}[\alpha] \circ \eta_A$. In other words, the following diagram commutes: </div>
+      <!-- <div>Let $\eta_A: A \to C$ and $\eta_B: B \to D$ be a pair of maps and let $\alpha: A \to B$ and $\beta: C \to D$ be a pair of morphisms. We say that $eta_A$ and $\eta_B$ are <i>natural with respect to $\alpha$ and $\beta$</i> if the following diagram commutes: </div>
+ -->
+      <div class="def">Let $\mathsf{F},\mathsf{G}:\textbf{A} \to \textbf{B}$ be two functors. Let $\eta: \mathsf{F}(A) \to \mathsf{G}(C)$ and $\theta: \mathsf{F}(B) \to \mathsf{G}(D)$ be two morphisms in $textbf{B}$ and let $\alpha: A \to B$ and $\beta: C \to D$ be two morphisms in $\textbf{A}$. Then we say that $\eta$ and $\theta$ are <i>natural with respect to $\alpha$ and $\beta$</i> if the following diagram commutes:</div>
       <div style="width:100%;display:flex;justify-content: center;">
-        <img src="./natural_transformation.png" width="70%"/>
+        <img src="./natural.png" width="70%"/>
       </div>
+      <div class="def">A <i>natural transformation</i> is a map $\eta: \afunc{F} \Rightarrow \afunc{G}$ between two functors, $\afunc{F},\afunc{G}:\textbf{C} \to \textbf{D}$. It consists of a family of morphisms $\eta_A:\afunc{F}(A) \to \afunc{G}(A)$, one for each object $A\in \textbf{C}$, such that for each morphism $\alpha : A \to B$ in $A$, the following diagram commutes:</div>
+        <div style="width:100%;display:flex;justify-content: center;">
+          <img src="./natural_transformation.png" width="70%"/>
+        </div>
+      <div>In other words, we say that the family of maps $\eta$ is natural with respect to every morphism $\alpha$ in $\textbf{A}$.</div>
+      <div class="def">We say that two functors $\mathsf{F},\mathsf{G}:\textbf{A}\to\textbf{B}$ are <i>isomorphic</i> to each other if there exists a pair of natural transformations $\eta := \{\eta_A\}_{A \in \textbf{A}}$ and $\theta := \{\theta_A\}_{A \in \textbf{A}}$ where $\eta_A: \mathsf{F}(A) \to \mathsf{G}(A)$ and $\theta_A: \mathsf{G}(A) \to \mathsf{F}(A)$, such that $\eta_A \circ \theta_A = G[\textbf{id}_A]$ and $\theta_A \circ \eta_A = F[\textbf{id}_A]$. In otherwords, the maps $\eta_A$ and $\theta_A$ are inverses of each other for each $A \in \textbf{A}$.</div>
       <div class="def">Let $\textbf{C}$ be a category. A <i>subcategory</i> $\textbf{S}$ of $\textbf{C}$ is a category consisting of a subcollection of objects of $\textbf{C}$, denoted as $\mathsf{ob}(\textbf{S})$ and a subcollection of morphisms of C, denoted as $\mathsf{hom}(\textbf{S})$, such that
       <ul>
         <li>for every $X$ in $\mathsf{ob}(\textbf{S})$, the identity morphism $\textbf{id}_X$ is in $\mathsf{hom}(\textbf{S})$</li>
         <li>for every morphism $\alpha: X \to Y$ in $\mathsf{hom}(\textbf{S})$, both the source $X$ and the target $Y$ are in $\mathsf{ob}(\textbf{S})$</li>
         <li>for every pair of morphisms $\alpha$ and $\beta$ in $\mathsf{hom}(\textbf{S})$, the composite $\alpha \circ \beta$ is in $\mathsf{hom}(\textbf{S})$ (whenever the composition is defined).</li>
       </ul></div>
+      <div class="def">A <i>class</i> is any collection of objects and a <i>proper class</i> is any collection of objects that is not a set. A proper class is a collection of objects which contradicts one of the axioms of Zermelo–Fraenkel set theory. Informally, we can think of a proper class to be a collection which is 'too big' to be a set itself. For example, consider the collection $\mathsf{S}$ of all sets. Then, every subcollection of $\mathsf{S}$ is also a set and therefore is in $\mathsf{S}$. If we assume $\mathsf{S}$ is a set, then every element of the power set $P(\mathsf{S})$ of $\mathsf{S}$ is also in $\mathsf{S}$. This means that $P(\mathsf{S}) \subseteq \mathsf{S}$  which is a contradiction of Cantor's Theorem which states that the cardinality of the power set is strictly larger than the set itself.</div>
+      <div>Examples of proper classes include the collection of all sets, the collection of all topological spaces, and the collection of all vector spaces. To see this, note that any set can be given the discrete topology. So the collection of all topological spaces includes teh collection of all sets equipped with the discrete topology. Since the collection of all sets is not a set, the collection of all topological spaces is not a set. A similar argument can be made for the collection of all vector spaces.</div>
+      <div class="def">A category $\textbf{C}$ is <i>small</i> if $\mathsf{ob}(\textbf{C})$ is a set rather than a proper class. Likewise, a category $\textbf{D}$ is <i>large</i> if $\mathsf{ob}(\textbf{D})$ is a proper class.</div>
+      <div class="def">Let $\textbf{A},\textbf{B}$ be categories with $\textbf{A}$ being a small category. Then the category of functors from $\textbf{A}$ to $\textbf{B}$ form a category, denoted as $\textbf{B}^{\textbf{A}}$, where the morphisms are natural transformations between the functors. We can think of this category of functors as a way of indexing the objects of $\textbf{B}$. <note>Give short example</note></div>
+      <div></div>
       <div class="sub-section"><div class="title">Category of Scalar Fields</div></div>
       <div>We can construct the <i>category of scalar fields</i> (in related work also called the category of $\mathbb{R}$-spaces) denoted as $\rtop$ by stating that each object is a scalar field $(\mathbb{X},f)$ and each morphism $\alpha: (\mathbb{X},f) \to (\mathbb{Y},g)$ is a continuous, <i>function-preserving</i> map $\alpha:\mathbb{X}\to \mathbb{Y}$ between topological spaces. A function preserving map means that $\alpha \circ g = f$. In other words, the following diagram commutes:</div>
       <div style="width:100%;display:flex;justify-content:center;">
@@ -121,7 +134,15 @@
 
 
       <div class="sub-section"><div class="title">Pre-Cosheafs and Cosheafs</div></div>
+      <div class="def">Let $\textbf{Int}$ denote the category of intervals $I\subseteq \mathbb{R}$ where the morphisms between the intervals is inclusion. We usually denote this morphism using the subest notation $I \subseteq J$.<div>
+      <div class="def">Let $\textbf{Set}$ note the category of sets where the morphisms between objects are functions between the sets.</div>
+      <div class="def">We define the category of <i>pre-cosheafs</i> as the category of functors $\textbf{Pre} := \textbf{Set}^{\textbf{Int}}$. That is, for every interval on the real line, we have a way of mapping this interval to a set.</div>
       <div class="section"><div class="title">Interleaving Distance</div></div>
+      <div>The interleaving distance between two functors is a way to gauge how close two Pre-Cosheafs are to each other based on "approximate isomorphisms".</div>
+      <div class="def">We say that two pre-cosheafs $\mathsf{F},\mathsf{G}$ are <i>$\varepsilon$-interleaved</i> if there exists a family of morphisms
+      \[\varphi_I:\mathsf{F}(I) \to \mathsf{G}(I^{\varepsilon}), \hspace{0.75in} \psi_I:\mathsf{G}(I) \to \mathsf{F}(I^{\varepsilon}),\]
+      which are natural with respect to the inclusions $I \subseteq J$, such that 
+      \[\psi_{I^{\varepsilon}} \circ \varphi_I = \mathsf{F}[I\subseteq I^{2\varepsilon}], \hspace{0.75in} \varphi_{I^{\varepsilon}} \circ \psi_I = \mathsf{G}[I\subseteq I^{2\varepsilon}]\]</div>
       <div class="section"><div class="title">Computational Methods</div></div>
       <div class="section"><div class="title">Future Direction and Proposed Work</div></div>
     </div>
