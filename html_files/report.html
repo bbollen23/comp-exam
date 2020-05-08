@@ -133,18 +133,89 @@
         
 
 
-      <div class="sub-section"><div class="title">Pre-Cosheafs and Cosheafs</div></div>
+      <div class="sub-section"><div class="title">Pre-Cosheafs</div></div>
+      <div>Pre-cosheafs allow us to abstract the data the a Reeb Graph provides us. In this section, we define what a pre-cosheaf is and show how we can describe the pre-cosheaf of a Reeb Graph.</div>
+      <div class="def">Let $\textbf{Open}(\mathcal{X})$ be the cateogry of open sets on the topological space $\mathcal{X}$ where $I \to J$ if $I \subseteq J$. Then a <i>pre-cosheaf</i> is a functor $\mathsf{F}: \textbf{Open}(\mathcal{X}) \to \textbf{D}$ where $D$ is some category. In other words, <b>a pre-cosheaf is an assignment of data to open sets of a topological space $\mathcal{X}$</b>.</div>
+      <div>In this work, our pre-cosheaves will exclusively have the category of intervals on the real line $\textbf{Int}$ as the domain space and the category of sets $\mathbf{Set}$ as the range space. Note that the morphisms in $\textbf{Set}$ are functions between sets.</div>
+      <div class="def">We define the <i>category of pre-cosheaves</i> $\textbf{Pre}$ as functors from $\textbf{Int}$ to $\textbf{Set}$. In other words, $\textbf{Pre} := \textbf{Set}^{\textbf{Int}}$</div>
       <div class="def">Let $\textbf{Int}$ denote the category of intervals $I\subseteq \mathbb{R}$ where the morphisms between the intervals is inclusion. We usually denote this morphism using the subest notation $I \subseteq J$.<div>
       <div class="def">Let $\textbf{Set}$ note the category of sets where the morphisms between objects are functions between the sets.</div>
-      <div class="def">We define the category of <i>pre-cosheafs</i> as the category of functors $\textbf{Pre} := \textbf{Set}^{\textbf{Int}}$. That is, for every interval on the real line, we have a way of mapping this interval to a set.</div>
+      <div>A Reeb Graph naturally encodes data about the connected components of the level sets of a scalar field. So, it makes sense to be able to view this as a pre-cosheaf where our domain space are the intervals of the real line and the data attached to these intervals is a set of path-connected components.</div>
+      <div class="def">Let $f = (\mathbb{X},f)$ be a scalar Reeb Graph. The <i>Reeb cosehaf functor $\mathcal{C}$</i> is defined by the formulas
+        \[\mathsf{F}(I) = \pi_0(f^{-1}(I)), \hspace{0.5in} \mathsf{F}[I\subseteq J] = \pi_0[f^{-1}(I) \subseteq f^{-1}(J)].\]
+        This functor converts a Reeb Graph to its pre-cosheaf. Thus, $\mathcal{C}: \textbf{Reeb} \to \textbf{Pre}$.
+      </div>
+      <!-- <div></div> -->
+      
+
       <div class="section"><div class="title">Interleaving Distance</div></div>
-      <div>The interleaving distance between two functors is a way to gauge how close two Pre-Cosheafs are to each other based on "approximate isomorphisms".</div>
+      <div class="sub-section"><div class="title">Interleaving of Pre-Cosheafs</div></div>
+      <div>The interleaving distance between two pre-cosheaves is a way to gauge how close they are to each other based on "approximate isomorphisms".</div>
       <div class="def">We say that two pre-cosheafs $\mathsf{F},\mathsf{G}$ are <i>$\varepsilon$-interleaved</i> if there exists a family of morphisms
       \[\varphi_I:\mathsf{F}(I) \to \mathsf{G}(I^{\varepsilon}), \hspace{0.75in} \psi_I:\mathsf{G}(I) \to \mathsf{F}(I^{\varepsilon}),\]
       which are natural with respect to the inclusions $I \subseteq J$, such that 
-      \[\psi_{I^{\varepsilon}} \circ \varphi_I = \mathsf{F}[I\subseteq I^{2\varepsilon}], \hspace{0.75in} \varphi_{I^{\varepsilon}} \circ \psi_I = \mathsf{G}[I\subseteq I^{2\varepsilon}]\]</div>
+      \[\psi_{I^{\varepsilon}} \circ \varphi_I = \mathsf{F}[I\subseteq I^{2\varepsilon}], \hspace{0.75in} \varphi_{I^{\varepsilon}} \circ \psi_I = \mathsf{G}[I\subseteq I^{2\varepsilon}]\]
+      Note that when $\varepsilon = 0$, this is exactly an isomorphism between $\mathsf{F}$ and $\mathsf{G}$. When two pre-cosheafs are $\varepsilon$-interleaved, we say that there exists an <i>$\varepsilon$-interleaving</i> between them.</div>
+      <div class="def">The <i>interleaving distance</i> between two pre-cosheafs $\mathsf{F}$ and $\mathsf{G}$ is defined as 
+        \[ d_I(\mathsf{F},\mathsf{G}) = \inf\{\varepsilon \geq 0 | \text{  there exists an } \varepsilon-\text{interleaving between } \mathsf{F},\mathsf{G}\}\]</div>
+      <div class="sub-section"><div class="title">Interleaving of Reeb Graphs</div></div>
+      <div class="def">Let $f = (\mathbb{X},f)$ and $g = (\mathbb{Y},g)$ be two Reeb Graphs. Since we have a notion of distance between two pre-cosheafs, we can define the <i>interleaving distance between $f,g$</i> simply by 
+      \[d_I(f,g) := d_I(\mathcal{C}(f),\mathcal{C}(g))\]
+      </div>
+      <div>Unfortunately, this definition of the interleaving distance is very abstract and requires converting our Reeb Graphs to pre-cosheafs before defining the distance. What we seek to find is a nice geometric realization of this distance.</div>
+      <div class="sub-section"><div class="title">Smoothing Functors</div></div>
+      <div>Even categorically, the interleaving distance between two cosheafs is difficult to describe. Here, we introduce the idea of the <i>Smoothing Functor</i>. Our goal is to be able to construct a map between pre-cosheafs which encompasses the notion of $\varepsilon$-interleaving.</div>
+      <div class="def">The <i>expansion functor</i> by $\varepsilon > 0$, $\Omega_{\varepsilon}$, is described as
+        \[\Omega_{\varepsilon}: \textbf{Int} \to \textbf{Int} ;\hspace{0.1in} I \mapsto I^{\varepsilon}\]
+      </div>
+      <div>This is a well defined functor since when $I \subseteq J$ we have $I^{\varepsilon} \subseteq J^{\varepsilon}$. We say that an pre-cosheaf can be "$\varepsilon$-smoothed" to obtain a new pre-cosheaf by pre-composition of the smoothing functor:
+        \[\mathsf{F}\Omega_{\varepsilon}: \textbf{Int} \to \textbf{Set}; \hspace{0.1in} \mathsf{F}\Omega_{\varepsilon}(I) = \mathsf{F}(I^{\varepsilon})\] </div>
+      <div>Note that since $I \subseteq I^{\varepsilon}$ for all $I$, we can construct a natural transformation $\omega^{\varepsilon} :1_{\textbf{Int}} \Rightarrow \Omega_{\varepsilon}$. That is, the following diagram commutes:</div>
+      <note>Put diagram of this. they gloss over in paper but I think it'll just be easier to see without having a really strong category theory background</note>
+      <div>Because of this, we can compose $\omega^{\varepsilon}$ with the pre-cosheaf $\mathsf{F}$ to get $\sigma^{\varepsilon}_{\mathsf{F}} = \mathsf{F}\omega^{\varepsilon}: \mathsf{F} \Rightarrow \mathsf{F}\Omega_{\varepsilon}$ defined explicitly by $(\sigma_{\mathsf{F}}^{\varepsilon})_I = \mathsf{F}[I \subseteq I^{\varepsilon}]: \mathsf{F}(I) \to \mathsf{F}(I^{\varepsilon})$. From all this heavy lifting, we get the following new definition of the interleaving distance between pre-cosheafs:</div>
+      <div class="def">We say that two pre-cosheafs $\mathsf{F},\mathsf{G}$ are <i>$\varepsilon$-interleaved</i> if there exists a pair of natural transformations $\varphi: \mathsf{F} \Rightarrow \mathsf{G}\Omega_{\varepsilon}$ and $\psi: \mathsf{G}\Rightarrow \mathsf{F}\Omega_{\varepsilon}$ such that the following diagrams commute:</div>
+      <note>Put the natural transformation diagrams here, page 23</note>
+      <div class="sub-section"><div class="title">Thickening Functors</div></div>
+      <div>Here we describe a <i>thickening functor</i> on Reeb Graphs that operates in parallel to the smoothing functors described previously. What we will show is that it is equivalent to work with thickened Reeb Graphs or smoothed pre-cosheafs.</div>
+      <div class="def">For $\varepsilon \geq 0$, we define the thickening functor $\mathcal{T}_{\varepsilon}:\rtop \to \rtop as follows:
+        <ul>
+          <li>Let $(\mathbb{X},f)$ be a scalar field, let $\mathbb{X}_{\varepsilon} = \mathbb{X} \times [-\varepsilon,\varepsilon]$, and let $f_{\varepsilon}(x,t) = f(x) + t$. Then $\mathcal{T}_{\varepsilon}(\mathbb{X},f) = (\mathbb{X}_{\varepsilon},f_{\varepsilon})$</li>
+          <li>Let $\alpha:(\mathbb{X},f) \to (\mathbb{Y},g)$ be a morphism in $\rtop$. Then we define $\mathcal{T}_{\varepsilon} : (\mathbb{X}_{\varepsilon},f_{\varepsilon}) \to (\mathbb{Y}_{\varepsilon},g_{\varepsilon})$ by $(x,t) \mapsto (\alpha(x),t)$.</li>
+        </ul>
+      </div>
+      <div class="thm">The functors $\mathcal{C}\mathcal{T}_{\varepsilon}$ and $\mathcal{S}_{\varepsilon}\mathcal{C}$ are naturally isomorphic.</div>
+      <note>Need to state the lemma needed for this, prove both (maybe not?)</note>
       <div class="section"><div class="title">Computational Methods</div></div>
+      <ul>
+        <li> Definitions and construction
+          <ul>
+            <li>Construction of a persistence diagram from a scalar field</li>
+            <li>Comparison to Reeb Graphs</li>
+            <li>Definition of Bottleneck distance for persistence diagrams</li>
+            <li>Definition of Wasserstein distance for persistence diagrams</li>
+          </ul>
+        </li>
+        <li> Computation of Distances
+          <ul>
+            <li>Computing Bottleneck distance</li>
+            <li>Computing Wasserstein Distance</li>
+          </ul>
+        </li>
+        <li> Interleaving Distance
+          <ul>
+            <li> Constructing a Reeb Graph (?)</li>
+            <li> Labeled merge tree case</li>
+            <li> Graph isomorphism hard </li>
+          </ul>
+        </li>
+      </ul>
       <div class="section"><div class="title">Future Direction and Proposed Work</div></div>
+      <ul>
+        <li>Approximations to Interleaving distance (?)</li>
+        <li>Usefulness with Mapper Graphs</li> 
+        <li>Machine learning for metric learning of Reeb Graphs</li>
+      <ul>
+      <note>I need a timeline for what I'm doing with my work, and what we plan to do</note>
     </div>
   </body>
 </html>
