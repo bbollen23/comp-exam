@@ -35,7 +35,7 @@
     <div class="container">
       <div class="page">
         <div class="header" style="margin-bottom:30px;">
-          <div style="font-size:2.0em;font-weight:500;margin-bottom:30px;">Interleaving Distance between Scalar Fields</div>
+          <div style="font-size:2.0em;font-weight:500;margin-bottom:30px;">Graph Neural Networks</div>
         </div>
       </div>
       $
@@ -183,12 +183,6 @@
           <li>Let $\alpha:(\mathbb{X},f) \to (\mathbb{Y},g)$ be a morphism in $\rtop$. Then we define $\mathcal{T}_{\varepsilon} : (\mathbb{X}_{\varepsilon},f_{\varepsilon}) \to (\mathbb{Y}_{\varepsilon},g_{\varepsilon})$ by $(x,t) \mapsto (\alpha(x),t)$.</li>
         </ul>
       </div>
-
-
-
-      <!-- ---------------------------------------------------------------------------------------------------------------------------------- -->
-
-
       <div class="thm">The functors $\mathcal{C}\mathcal{T}_{\varepsilon}$ and $\mathcal{S}_{\varepsilon}\mathcal{C}$ are naturally isomorphic.</div>
       <note>Need to state the lemma needed for this, prove both (maybe not?)</note>
 
